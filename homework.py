@@ -65,8 +65,11 @@ class Running(Training):
         coeff_calorie_1 = 18
         coeff_calorie_2 = 20
         spent_calories = (
-            (coeff_calorie_1 * self.get_mean_speed()
-            - coeff_calorie_2) * self.weight / self.M_IN_KM
+            (
+                coeff_calorie_1 
+                * self.get_mean_speed()
+                - coeff_calorie_2
+            ) * self.weight / self.M_IN_KM
             * self.duration * self.MIN_IN_HOUR
         )
         return spent_calories
@@ -89,10 +92,17 @@ class SportsWalking(Training):
         coeff_calorie_1 = 0.035
         coeff_calorie_2 = 0.029
         spent_calories = (
-            (coeff_calorie_1 * self.weight
-            + (self.get_mean_speed()**2 // self.height)
-            * coeff_calorie_2 * self.weight)
-            * self.duration * self.MIN_IN_HOUR
+            (
+                coeff_calorie_1 
+                * self.weight
+                + (
+                    self.get_mean_speed()**2 
+                    // self.height
+                )
+                * coeff_calorie_2 
+                * self.weight)
+                * self.duration 
+                * self.MIN_IN_HOUR
         )
         return spent_calories
 
