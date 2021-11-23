@@ -78,6 +78,7 @@ class Running(Training):
 class SportsWalking(Training):
     """Тренировка: спортивная ходьба."""
     training_type = 'SportsWalking'
+
     def __init__(self,
                  action: int,
                  duration: float,
@@ -96,6 +97,7 @@ class SportsWalking(Training):
                           * coeff_calorie_2 * self.weight)
                           * self.duration * self.MIN_IN_HOUR)
         return spent_calories
+
 
 class Swimming(Training):
     """Тренировка: плавание."""
@@ -139,12 +141,10 @@ def read_package(workout_type: str, data: list):
     return training_object
 
 
-def main(training: Training):
-    """Главная функция."""
+def main(training):
     info = training.show_training_info()
     info_message = info.get_message()
     print(info_message)
-
 
 
 packages = [
