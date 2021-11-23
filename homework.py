@@ -166,12 +166,13 @@ def read_package(workout_type: str, data: list) -> Training:
 
 
 def main(training: Training) -> None:
-    """Главная функция.""" 
+    """Главная функция."""
     info = training.show_training_info()
     info_message = info.get_message()
     print(info_message)
 
-if __name__ == '__main__': 
+
+if __name__ == '__main__':
     packages = [
         ('SWM', [720, 1, 80, 25, 40]),
         ('RUN', [15000, 1, 75]),
