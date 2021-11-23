@@ -100,9 +100,10 @@ class SportsWalking(Training):
                     // self.height
                 )
                 * coeff_calorie_2
-                * self.weight)
-                * self.duration
-                * self.MIN_IN_HOUR
+                * self.weight
+            )
+            * self.duration
+            * self.MIN_IN_HOUR
         )
         return spent_calories
 
