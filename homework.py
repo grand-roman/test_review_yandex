@@ -1,18 +1,20 @@
 class InfoMessage:
     """Информационное сообщение о тренировке."""
     def __init__(self,
+                 training_type: str,
                  duration: float,
                  distance: float,
                  speed: float,
                  calories: float
                  ) -> None:
+        self.training_type = training_type
         self.duration = duration
         self.distance = distance
         self.speed = speed
         self.calories = calories
 
     def get_message(self) -> str:
-        text = (f'Тип тренировки: {self.__class__.__name__,}; '
+        text = (f'Тип тренировки: {self.training_type}; '
                 + f'Длительность: {self.duration:.3f} ч.; '
                 + f'Дистанция: {self.distance:.3f} км; '
                 + f'Ср. скорость: {self.speed:.3f} км/ч; '
@@ -25,6 +27,7 @@ class Training:
     LEN_STEP: float = 0.65
     M_IN_KM: int = 1000
     MIN_IN_HOUR: int = 60
+    TRAINING_TYPE: str = 'Base training'
 
     def __init__(self,
                  action: int,
@@ -50,6 +53,7 @@ class Training:
     def show_training_info(self) -> InfoMessage:
         """Вернуть информационное сообщение о выполненной тренировке."""
         return InfoMessage(
+            self.TRAINING_TYPE,
             self.duration,
             self.get_distance(),
             self.get_mean_speed(),
@@ -59,6 +63,8 @@ class Training:
 
 class Running(Training):
     """Тренировка: бег."""
+    TRAINING_TYPE: str = 'Running'
+
     def get_spent_calories(self) -> float:
         """Получить количество затраченных калорий."""
         coeff_calorie_1: int = 18
@@ -71,6 +77,8 @@ class Running(Training):
 
 class SportsWalking(Training):
     """Тренировка: спортивная ходьба."""
+    TRAINING_TYPE: str = 'SportsWalking'
+
     def __init__(self,
                  action: int,
                  duration: float,
@@ -93,6 +101,7 @@ class SportsWalking(Training):
 
 class Swimming(Training):
     """Тренировка: плавание."""
+    TRAINING_TYPE: str = 'Swimming'
     LEN_STEP: float = 1.38
 
     def __init__(self,
